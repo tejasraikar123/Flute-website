@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Button Display</title>
+    <style>
+        .button-container {
+            margin-bottom: 10px;
+        }
+        .image-container img {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="button-container">
+        <button onclick="displayImage('E:/Tejas/Flute website/Images/SA.png')">Button 1</button>
+        <button onclick="displayImage('E:/Tejas/Flute website/Images/RE.png')">Button 2</button>
+        <button onclick="displayImage('E:/Tejas/Flute website/Images/GA.png')">Button 3</button>
+        <button onclick="displayImage('E:/Tejas/Flute website/Images/MA.png')">Button 4</button>
+        <button onclick="displayImage('E:/Tejas/Flute website/Images/PA.png')">Button 5</button>
+        <button onclick="displayImage('E:/Tejas/Flute website/Images/DHA.png')">Button 6</button>
+        <button onclick="displayImage('E:/Tejas/Flute website/Images/NHI.png')">Button 7</button>
+        <button onclick="displayImage('E:/Tejas/Flute website/Images/SA.png')">Button 8</button>
+        <button onclick="undoLast()">UNDO</button>
+        <button onclick="resetAll()">RESET</button>
+    </div>
+    <div class="image-container" id="imageContainer"></div>
+
+    <script>
+        const imageContainer = document.getElementById('imageContainer');
+        const imageStack = [];
+
+        function displayImage(imagePath) {
+            const img = document.createElement('img');
+            img.src = imagePath;
+            imageContainer.appendChild(img);
+            imageStack.push(img);
+        }
+
+        function undoLast() {
+            if (imageStack.length > 0) {
+                const lastImage = imageStack.pop();
+                imageContainer.removeChild(lastImage);
+            }
+        }
+
+        function resetAll() {
+            while (imageStack.length > 0) {
+                const lastImage = imageStack.pop();
+                imageContainer.removeChild(lastImage);
+            }
+        }
+    </script>
+</body>
+</html>
